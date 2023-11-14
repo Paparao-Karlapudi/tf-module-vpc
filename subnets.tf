@@ -5,13 +5,16 @@ module "subnets" {
   default_vpc_id    = var.default_vpc_id
   env               = var.env
 
-  for_each   = var.subnets
-  name       = each.value.name
-  cidr_block = each.value.cidr_block
+  for_each    = var.subnets
+  name        = each.value.name
+  cidr_block  = each.value.cidr_block
+  internet_gw = lookup(each.value, "internet_gw", false)
+#  nat_gw      = lookup(each.value, "nat_gw", false )
 
   vpc_id                    = aws_vpc.main.id
   vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
   tags                      = local.common_tags
+  gateway_id                = aws_internet_gateway.gw.id
 }
 
 #resource "aws_route" "r" {
