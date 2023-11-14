@@ -1,4 +1,10 @@
 locals {
+  common_tags = var.tags
+}
+
+
+
+locals {
   common_tags = {
     env = var.env
     project = "robo shop"
