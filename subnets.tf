@@ -11,7 +11,7 @@ module "subnets" {
 
   vpc_id                    = aws_vpc.main.id
   vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
-  tags                      = local.common_tags
+
 }
 
 #resource "aws_route" "r" {
