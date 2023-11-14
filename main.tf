@@ -27,7 +27,7 @@ resource "aws_internet_gateway" "gw" {
 
 }
 resource "aws_eip" "ngw-eip" {
-  domain   = "vpc"
+  vpc   = true
 }
 
 resource "aws_nat_gateway" "ngw" {
@@ -36,5 +36,4 @@ resource "aws_nat_gateway" "ngw" {
 
   tags = merge(local.common_tags, { Name = "${var.env}-ngw" } )
 
-  #  depends_on = [aws_internet_gateway.example]
 }
