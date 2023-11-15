@@ -37,3 +37,5 @@ resource "aws_nat_gateway" "ngw" {
   tags = merge(local.common_tags, { Name = "${var.env}-ngw" } )
 
 }
+
+
